@@ -1,25 +1,20 @@
 import React, { Component } from 'react';
-import { combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
-import { createStore, renderDevTools } from '../utils/devTools';
-
+import DevTools from './DevTools';
 import FriendListApp from './FriendListApp';
-import * as reducers from '../reducers';
 
-const reducer = combineReducers(reducers);
-const store = createStore(reducer);
 
 export default class App extends Component {
     render() {
+        const { store } = this.props;
         return (
-            <div>
-                <Provider store={store}>
-                    {() => <FriendListApp /> }
-                </Provider>
-
-                {renderDevTools(store)}
-            </div>
+            <Provider store={store}>
+                <div>
+                    <FriendListApp />
+                    <DevTools />
+                </div>
+            </Provider>
         );
     }
 }
