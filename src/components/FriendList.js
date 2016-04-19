@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 import FriendListItem from './FriendListItem';
+import styles from './FriendList.css';
 
 export default class FriendList extends Component {
     static propTypes = {
@@ -25,7 +26,7 @@ export default class FriendList extends Component {
         }
 
         return (
-            <ul >{map(this.props.friends)}</ul>
+            <ul className={styles.friendList}>{map(this.props.friends)}</ul>
         );
     }
 }
