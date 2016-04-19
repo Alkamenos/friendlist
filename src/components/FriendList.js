@@ -5,11 +5,12 @@ import styles from './FriendList.css';
 
 export default class FriendList extends Component {
     static propTypes = {
-        friends: PropTypes.object.isRequired
+        friends: PropTypes.object.isRequired,
+        actions: PropTypes.object.isRequired
     };
 
     render() {
-        function map(friends) {
+        function map(friends, actions) {
             let list = [];
 
             for (let record in friends) {
@@ -19,6 +20,8 @@ export default class FriendList extends Component {
                     <FriendListItem key={friend.id}
                                     id={friend.id}
                                     name={friend.name}
+                                    starred={friend.starred}
+                        {...actions}
                     />
                 )
             }
@@ -26,7 +29,7 @@ export default class FriendList extends Component {
         }
 
         return (
-            <ul className={styles.friendList}>{map(this.props.friends)}</ul>
+            <ul className={styles.friendList}>{map(this.props.friends, this.props.actions)}</ul>
         );
     }
 }
