@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import styles from './FriendListApp.css';
 
 import { FriendList } from '../components';
 
@@ -15,7 +16,7 @@ export default class FriendListApp extends Component {
     render() {
         const { friendlist: { friendsById }, dispatch } = this.props;
         return (
-            <div>
+            <div className={styles.friendListApp}>
                 <h1>The FriendList</h1>
                 <FriendList friends={friendsById}/>
             </div>
